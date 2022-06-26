@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supply{% endblock %}
+
+{% block body %}
+    <h1>Supply</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ supply.id }}</td>
+            </tr>
+            <tr>
+                <th>Vendor</th>
+                <td>{{ supply.Vendor }}</td>
+            </tr>
+            <tr>
+                <th>Product</th>
+                <td>{{ supply.Product }}</td>
+            </tr>
+            <tr>
+                <th>SupplyDate</th>
+                <td>{{ supply.SupplyDate ? supply.SupplyDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ supply.SupplyAmount }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ supply.SupplyPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_supply_index') }}">back to list</a>
+
+    <a href="{{ path('app_supply_edit', {'id': supply.id}) }}">edit</a>
+
+    {{ include('supply/_delete_form.html.twig') }}
+{% endblock %}

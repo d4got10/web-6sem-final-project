@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supplies{% endblock %}
+
+{% block body %}
+    <h1>Supplies</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Vendor</th>
+                <th>Product</th>
+                <th>Supply Date</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for supply in supplies %}
+            <tr>
+                <td>{{ supply.id }}</td>
+                <td>{{ supply.Vendor }}</td>
+                <td>{{ supply.Product }}</td>
+                <td>{{ supply.SupplyDate ? supply.SupplyDate|date('Y-m-d') : '' }}</td>
+                <td>{{ supply.SupplyAmount }}</td>
+                <td>{{ supply.SupplyPrice }}</td>
+                <td>
+                    <a href="{{ path('app_supply_show', {'id': supply.id}) }}">show</a>
+                    <a href="{{ path('app_supply_edit', {'id': supply.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_supply_new') }}">Create new</a>
+{% endblock %}
